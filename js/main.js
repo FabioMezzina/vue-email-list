@@ -3,12 +3,17 @@ const app = new Vue({
   data: {
     emails: [],
   }, // <- End Data
+  computed: {
+    loaded() {
+      return this.emails.length === 10;;
+    }
+  },
   created() {
     this.generateEmail();
   }, // <- End Created
   methods: {
     /**
-     * Generate 10 random email addresses
+     * Generates 10 random email addresses
      */
     generateEmail() {
       this.emails = [];

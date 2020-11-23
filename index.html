@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Email List</title>
+  <!-- Font Awesome -->
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css'/>
   <!-- Style -->
   <link rel="stylesheet" href="./css/style.css">
   <!-- Vue.js -->
@@ -11,16 +13,22 @@
 </head>
 <body>
 
-  <div id="app" class="main-app">
-    <div class="generateSection">
-      <h1>Random email generator</h1>
-      <button @click="generateEmail">Generate</button>
+  <div id="app">
+    <div class="main-app" v-if="loaded">
+      <div class="generateSection">
+        <h1>Random email generator</h1>
+        <button @click="generateEmail">Generate</button>
+      </div>
+      <ul class="emailList">
+        <li v-for="email in emails">
+          {{ email }}
+        </li>
+      </ul>
     </div>
-    <ul class="emailList">
-      <li v-for="email in emails">
-        {{ email }}
-      </li>
-    </ul>
+
+    <div class="loader" v-else>
+      <i class="fas fa-spinner"></i>
+    </div>
   </div>
 
   <!-- JS -->
